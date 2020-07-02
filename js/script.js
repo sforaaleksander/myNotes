@@ -7,7 +7,7 @@ function createNote() {
 
     const titleBox = document.createElement("div");
     titleBox.setAttribute("class", "titleBox");
-    const header = document.createElement("h4");
+    const header = document.createElement("textarea");
     header.setAttribute("class", "noteHeader");
     header.setAttribute("contenteditable", "true");
 
@@ -16,8 +16,8 @@ function createNote() {
     text.setAttribute("class", "text");
     text.innerHTML = "Write your note!";
 
+    titleBox.appendChild(header);
     divBox.appendChild(titleBox);
-    divBox.appendChild(header);
     divBox.appendChild(text);
 
 
