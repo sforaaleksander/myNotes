@@ -1,0 +1,59 @@
+h1, h5 {
+    font-family: "Courier 10 Pitch", sans-serif;
+    color: #15130f;
+}
+
+h1 {
+    margin-top: -0.2em;
+    margin-bottom: 0.9em;
+    margin-left: 0.5em;
+}
+
+h5 {
+    margin-top: 0.9em;
+}
+
+body {
+    padding: 2em;
+    background-color: #f96a04;
+}
+
+button {
+    background-color: #373e30;
+    border:none;
+    padding: 1em;
+    border-radius: 5px;
+    color: #fff;
+    margin-left: 1em;
+}
+
+button:hover{
+    background-color: #e79663;
+    color: darkred;
+}
+
+#container {
+    padding-top: 2em;
+}
+
+.divBox {
+    height: 6em;
+    width: 15em;
+    background-color: #a9a79f;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    border-bottom: solid #4e443c 0.5em;
+    border-right: solid #4e443c 0.5em;
+    border-radius: 0.4em;
+}
+
+.titleBox {
+    padding: 0.0005em;
+}
+
+textarea {
+    resize: none;
+    background-color: #a9a79f;
+    border:none;
+    color: black;
+}
