@@ -2,20 +2,20 @@ let noteId = 0;
 
 function createDivBox() {
     const divBox = document.createElement("div");
-    divBox.setAttribute("id", "divBox " + noteId.toString());
-    divBox.setAttribute("class", "divBox");
+    divBox.setAttribute("id", "div-box " + noteId.toString());
+    divBox.setAttribute("class", "div-box");
     return divBox;
 }
 
 function createTitleBox() {
     const titleBox = document.createElement("div");
-    titleBox.setAttribute("class", "titleBox");
+    titleBox.setAttribute("class", "title-box");
     return titleBox;
 }
 
 function createHeader() {
     const header = document.createElement("textarea");
-    header.setAttribute("class", "noteHeader");
+    header.setAttribute("class", "note-header");
     header.setAttribute("contenteditable", "true");
     header.innerHTML = "Edit your note's title!";
     return header;
@@ -24,7 +24,7 @@ function createHeader() {
 function createDeleteButton() {
     const button = document.createElement("button");
     // button.setAttribute("img", )
-    button.setAttribute("class", "deleteButton");
+    button.setAttribute("class", "delete-button");
     button.innerHTML = '<img src= ../img/exit-cross.png alt="exit-icon">';
     // button.style.width = "10%";
     return button;

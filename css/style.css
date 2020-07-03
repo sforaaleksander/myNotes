@@ -1,4 +1,4 @@
-h1, .noteHeader {
+h1, .note-header {
     font-family: "Courier 10 Pitch", sans-serif;
     color: #15130f;
     margin-left: 0.5em;
@@ -18,7 +18,7 @@ button {
     border:none;
 }
 
-#new-note-btn {
+#add-note-btn {
     background-color: #373e30;
     padding: 1em;
     border-radius: 5px;
@@ -26,12 +26,12 @@ button {
     margin-left: 1em;
 }
 
-#new-note-btn:hover{
+#add-note-btn:hover{
     background-color: #e79663;
     color: darkred;
 }
 
-.deleteButton {
+.delete-button {
     background-color: transparent;
     width: 2em;
 }
@@ -40,7 +40,7 @@ button {
     padding-top: 2em;
 }
 
-.divBox {
+.div-box {
     height: 6em;
     width: 15em;
     background-color: #a9a79f;
@@ -52,18 +52,18 @@ button {
     display: inline-block;
 }
 
-.titleBox, .noteHeader {
+.title-box, .note-header {
     padding: 0.0005em;
 }
 
-.titleBox {
+.title-box {
     width: 14.99em;
     background-color: #87897d;
     display: flex;
     flex-direction: row;
 }
 
-.noteHeader {
+.note-header {
     font-size: 14px;
     margin-top: 0.2em;
     width: 15em;
