@@ -23,10 +23,9 @@ function createHeader() {
 
 function createDeleteButton() {
     const button = document.createElement("button");
-    // button.setAttribute("img", )
     button.setAttribute("class", "delete-button");
     button.innerHTML = '<img src= ../img/exit-cross.png alt="exit-icon">';
-    // button.style.width = "10%";
+    button.addEventListener('click', deleteNote);
     return button;
 }
 
@@ -35,6 +34,11 @@ function createText() {
     text.setAttribute("class", "text");
     text.innerHTML = "Write your note!";
     return text;
+}
+
+function deleteNote() {
+    const note = this.parentNode.parentNode;
+    note.remove();
 }
 
 function createNote() {
@@ -58,7 +62,7 @@ function createNote() {
 }
 
 function main(){
-    document.getElementById("new-note-btn").addEventListener('click', createNote);
+    document.getElementById("add-note-btn").addEventListener('click', createNote);
 }
 
 main();
