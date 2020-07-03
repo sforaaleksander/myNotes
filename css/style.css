@@ -15,17 +15,25 @@ body {
 }
 
 button {
-    background-color: #373e30;
     border:none;
+}
+
+#new-note-btn {
+    background-color: #373e30;
     padding: 1em;
     border-radius: 5px;
     color: #fff;
     margin-left: 1em;
 }
 
-button:hover{
+#new-note-btn:hover{
     background-color: #e79663;
     color: darkred;
+}
+
+.deleteButton {
+    background-color: transparent;
+    width: 2em;
 }
 
 #container {
@@ -51,6 +59,8 @@ button:hover{
 .titleBox {
     width: 14.99em;
     background-color: #87897d;
+    display: flex;
+    flex-direction: row;
 }
 
 .noteHeader {

@@ -21,6 +21,15 @@ function createHeader() {
     return header;
 }
 
+function createDeleteButton() {
+    const button = document.createElement("button");
+    // button.setAttribute("img", )
+    button.setAttribute("class", "deleteButton");
+    button.innerHTML = '<img src= ../img/exit-cross.png alt="exit-icon">';
+    // button.style.width = "10%";
+    return button;
+}
+
 function createText() {
     const text = document.createElement("textarea");
     text.setAttribute("class", "text");
@@ -32,9 +41,11 @@ function createNote() {
     const divBox = createDivBox();
     const titleBox = createTitleBox();
     const header = createHeader();
+    const deleteButton = createDeleteButton();
     const text = createText();
 
     titleBox.appendChild(header);
+    titleBox.appendChild(deleteButton);
     divBox.appendChild(titleBox);
     divBox.appendChild(text);
 
