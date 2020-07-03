@@ -29,10 +29,17 @@ function createDeleteButton() {
     return button;
 }
 
+function saveNote() {
+    const note = this.value;
+    console.log(note);
+    localStorage.setItem(this, note);
+}
+
 function createText() {
     const text = document.createElement("textarea");
     text.setAttribute("class", "text");
     text.innerHTML = "Write your note!";
+    text.addEventListener('keypress', saveNote)
     return text;
 }
 
