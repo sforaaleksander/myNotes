@@ -1,4 +1,19 @@
-let noteId = 0;
+let noteId = checkLocalStorageForNoteId();
+
+function checkLocalStorageForNoteId() {
+    if (localStorage.getItem("noteId")) {
+        let noteNum = parseInt(localStorage.getItem("noteId"));
+        loadNotes(noteNum);
+        return noteNum;
+    } return 0;
+}
+
+// function loadNotes(noteNum) {
+//     for (let i=0; i<noteNum; i++) {
+//
+//     }
+//
+// }
 
 function createDivBox() {
     const divBox = document.createElement("div");
@@ -17,7 +32,9 @@ function createHeader() {
     const header = document.createElement("textarea");
     header.setAttribute("class", "note-header");
     header.setAttribute("contenteditable", "true");
+    header.setAttribute("id", "header " + noteId);
     header.innerHTML = "Edit your note's title!";
+    header.addEventListener('keypress', saveNote)
     return header;
 }
 
@@ -32,12 +49,23 @@ function createDeleteButton() {
 function saveNote() {
     const note = this.value;
     console.log(note);
-    localStorage.setItem(this, note);
+    const num = this.id.replace("header ", "").replace("text ", "");
+    let object = {
+        "id": num,
+        "header": "",
+        "text": ""
+    }
 }
+
+// localStorage.setItem('user', JSON.stringify({
+//     username: 'htmldog',
+//     api_key: 'abc123xyz789'
+// }));
 
 function createText() {
     const text = document.createElement("textarea");
     text.setAttribute("class", "text");
+    text.setAttribute("id", "text " + noteId);
     text.innerHTML = "Write your note!";
     text.addEventListener('keypress', saveNote)
     return text;
@@ -66,6 +94,7 @@ function createNote() {
     container.appendChild(divBox);
     noteId++;
     console.log("note added");
+    localStorage.setItem("noteId", noteId.toString());
 }
 
 function main(){
