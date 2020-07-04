@@ -2,8 +2,7 @@ let noteId = checkLocalStorageForNoteId();
 
 function checkLocalStorageForNoteId() {
     if (localStorage.getItem("noteId")) {
-        let noteNum = parseInt(localStorage.getItem("noteId"));
-        return noteNum;
+        return parseInt(localStorage.getItem("noteId"));
     } return 0;
 }
 
