@@ -86,9 +86,10 @@ function saveNote() {
             "id": num,
         }
     } else {
-        object = localStorage.getItem(num);
+        object = JSON.parse(localStorage.getItem(num));
     }
     object[values[0]] = note;
+    localStorage.removeItem(num);
     localStorage.setItem(num, JSON.stringify(object));
 }
 
