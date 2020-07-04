@@ -77,13 +77,10 @@ textarea {
     resize: none;
 }
 
-.text {
+.contents {
     background-color: #a9a79f;
-
-}
-
-.text {
     width: 19em;
     margin-left: 0.6em;
+
 }
 
