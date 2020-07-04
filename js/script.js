@@ -3,17 +3,18 @@ let noteId = checkLocalStorageForNoteId();
 function checkLocalStorageForNoteId() {
     if (localStorage.getItem("noteId")) {
         let noteNum = parseInt(localStorage.getItem("noteId"));
-        // loadNotes(noteNum);
         return noteNum;
     } return 0;
 }
 
-// function loadNotes(noteNum) {
-//     for (let i=0; i<noteNum; i++) {
-//
-//     }
-//
-// }
+function loadNotes() {
+    for (let i=0; i<noteId; i++) {
+        const note = JSON.parse(localStorage.getItem(i.toString()));
+        if (note) {
+            createNote(note.header, note.contents);
+        }
+    }
+}
 
 function createDivBox() {
     const divBox = document.createElement("div");
@@ -28,12 +29,16 @@ function createTitleBox() {
     return titleBox;
 }
 
-function createHeader() {
+function createHeader(title) {
     const header = document.createElement("textarea");
     header.setAttribute("class", "note-header");
     header.setAttribute("contenteditable", "true");
     header.setAttribute("id", "header " + noteId);
-    header.innerHTML = "Edit your note's title!";
+    if (title =="[object MouseEvent]"){
+        title = "Edit your note's title!";
+    }
+    // header.innerHTML = "Edit your note's title!";
+    header.innerHTML = title;
     header.addEventListener('keypress', saveNote)
     return header;
 }
@@ -46,26 +51,27 @@ function createDeleteButton() {
     return button;
 }
 
-function createText() {
-    const text = document.createElement("textarea");
-    text.setAttribute("class", "text");
-    text.setAttribute("id", "text " + noteId);
-    text.innerHTML = "Write your note!";
-    text.addEventListener('keypress', saveNote)
-    return text;
+function createContents(content) {
+    const contents = document.createElement("textarea");
+    contents.setAttribute("class", "contents");
+    contents.setAttribute("id", "contents " + noteId);
+    // text.innerHTML = "Write your note!";
+    contents.innerHTML = content;
+    contents.addEventListener('keypress', saveNote)
+    return contents;
 }
 
-function createNote() {
+function createNote(title = "Edit your note's title!", content = "Write your note!") {
     const divBox = createDivBox();
     const titleBox = createTitleBox();
-    const header = createHeader();
+    const header = createHeader(title);
     const deleteButton = createDeleteButton();
-    const text = createText();
+    const contents = createContents(content);
 
     titleBox.appendChild(header);
     titleBox.appendChild(deleteButton);
     divBox.appendChild(titleBox);
-    divBox.appendChild(text);
+    divBox.appendChild(contents);
 
     const container = document.getElementById("container");
 
@@ -79,7 +85,7 @@ function saveNote() {
     let object;
     const note = this.value;
     console.log(note);
-    const num = this.id.replace("header ", "").replace("text ", "");
+    const num = this.id.replace("header ", "").replace("contents ", "");
     const values = this.id.split(" ");
     if (localStorage.getItem(num) === null) {
          object = {
@@ -100,6 +106,7 @@ function deleteNote() {
 
 function main(){
     document.getElementById("add-note-btn").addEventListener('click', createNote);
+    loadNotes();
 }
 
 main();
