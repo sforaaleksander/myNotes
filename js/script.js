@@ -3,7 +3,7 @@ let noteId = checkLocalStorageForNoteId();
 function checkLocalStorageForNoteId() {
     if (localStorage.getItem("noteId")) {
         let noteNum = parseInt(localStorage.getItem("noteId"));
-        loadNotes(noteNum);
+        // loadNotes(noteNum);
         return noteNum;
     } return 0;
 }
@@ -46,22 +46,6 @@ function createDeleteButton() {
     return button;
 }
 
-function saveNote() {
-    const note = this.value;
-    console.log(note);
-    const num = this.id.replace("header ", "").replace("text ", "");
-    let object = {
-        "id": num,
-        "header": "",
-        "text": ""
-    }
-}
-
-// localStorage.setItem('user', JSON.stringify({
-//     username: 'htmldog',
-//     api_key: 'abc123xyz789'
-// }));
-
 function createText() {
     const text = document.createElement("textarea");
     text.setAttribute("class", "text");
@@ -69,11 +53,6 @@ function createText() {
     text.innerHTML = "Write your note!";
     text.addEventListener('keypress', saveNote)
     return text;
-}
-
-function deleteNote() {
-    const note = this.parentNode.parentNode;
-    note.remove();
 }
 
 function createNote() {
@@ -88,13 +67,34 @@ function createNote() {
     divBox.appendChild(titleBox);
     divBox.appendChild(text);
 
-
     const container = document.getElementById("container");
 
     container.appendChild(divBox);
     noteId++;
     console.log("note added");
     localStorage.setItem("noteId", noteId.toString());
+}
+
+function saveNote() {
+    let object;
+    const note = this.value;
+    console.log(note);
+    const num = this.id.replace("header ", "").replace("text ", "");
+    const values = this.id.split(" ");
+    if (localStorage.getItem(num) === null) {
+         object = {
+            "id": num,
+        }
+    } else {
+        object = localStorage.getItem(num);
+    }
+    object[values[0]] = note;
+    localStorage.setItem(num, JSON.stringify(object));
+}
+
+function deleteNote() {
+    const note = this.parentNode.parentNode;
+    note.remove();
 }
 
 function main(){
